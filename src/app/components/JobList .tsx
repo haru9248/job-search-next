@@ -9,7 +9,7 @@ type Job = {
 };
 
 const fetchJobs = async (): Promise<Job[]> => {
-    const response = await fetch('http://localhost:3000/api/jobs');
+    const response = await fetch(`${process.env.NEXT_PUBLIC_SUPABASE_URL}/api/jobs`);
     if (!response.ok) {
         throw new Error('求人情報の取得に失敗しました。');
     }
