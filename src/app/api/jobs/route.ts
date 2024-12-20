@@ -1,4 +1,4 @@
-import { supabase } from "../../../../utils/supabase";
+import { supabase } from "../../../lib/supabase";
 
 // Jobの型
 type Job = {
@@ -9,8 +9,8 @@ type Job = {
 
 
 export async function POST(req: Request) {
-    const { category, salary, title }: Job = await req.json(); 
-    
+    const { category, salary, title }: Job = await req.json();
+
     if (!category || !salary || !title) {
         return new Response(JSON.stringify({ error: '必要な情報が入力されていません。' }), { status: 400 });
     }
@@ -34,9 +34,7 @@ export async function POST(req: Request) {
 
 export async function GET() {
     try {
-        const { data, error } = await supabase
-            .from("jobs")
-            .select("*");
+        const { data, error } = await supabase.from("jobs").select("*");
         if (error) {
             return new Response(JSON.stringify({ error: error.message }), { status: 500 });
         }

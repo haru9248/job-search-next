@@ -26,7 +26,7 @@ const Sidebar = ({
 
 
   return (
-    <div className="bg-gray-100 h-[180vh] p-3 w-[30vh]">
+    <div className="bg-gray-100 h-[200vh] p-3 w-[30vh]">
       <div>
         <h3 className="text-xl font-bold mb-2">求人カテゴリ</h3>
         <ul className="mb-3">
