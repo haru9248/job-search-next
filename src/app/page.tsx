@@ -1,6 +1,5 @@
 
 import JobListClient from './components/JobListClient';
-import { supabase } from '../lib/supabase'
 
 type Job = {
   id: number;
@@ -10,9 +9,12 @@ type Job = {
 };
 
 const fetchJobs = async (): Promise<Job[]> => {
-    const { data, error } = await supabase.from('jobs').select('*');
-    if (error) throw new Error(error.message);
-    return data;
+  const response = await fetch('https://job-search-next-git-main-harus-projects-1560d214.vercel.app/api/jobs');
+  if (!response.ok) {
+    throw new Error('Failed to fetch jobs');
+  }
+  const data = await response.json();
+  return data;
 };
 
 export default async function JobList () {
