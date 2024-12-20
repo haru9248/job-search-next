@@ -14,6 +14,7 @@ const fetchJobs = async (): Promise<Job[]> => {
     throw new Error('Failed to fetch jobs');
   }
   const data = await response.json();
+  console.log("Fetched jobs:", data);
   return data;
 };
 
